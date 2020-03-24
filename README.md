@@ -10,7 +10,7 @@ Build from source
 
 The source code can be compiled with both Microsoft Visual C++ (14.0 and above) and MinGW.
 
-For Microsoft Visual C++, "Use Unicode Character Set" must be set.
+For Microsoft Visual C++, pass `/source-charset:UTF-8` to compiler options and "Use Unicode Character Set" must be set.
 
 For MinGW, pass `-DUNICODE -mwindows -municode` flags to `gcc`.
 
