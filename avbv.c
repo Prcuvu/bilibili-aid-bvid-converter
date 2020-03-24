@@ -12,7 +12,7 @@ unsigned long long x = 177451812ULL;
 unsigned long long a = 8728348608ULL;
 
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
-size_t inverse(WCHAR);
+unsigned long long inverse(WCHAR);
 
 int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLine, int nShowCmd)
 {
@@ -144,7 +144,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
     return 0;
 }
 
-size_t inverse(WCHAR ch)
+unsigned long long inverse(WCHAR ch)
 {
     for (size_t i = 0; i < 58; i += 1) {
         if (table[i] == ch) {
