@@ -26,7 +26,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     windowclass.hCursor = LoadCursorW(NULL, MAKEINTRESOURCEW(32512));
     windowclass.hbrBackground = (HBRUSH)COLOR_WINDOW;
     windowclass.lpszMenuName = NULL;
-    windowclass.lpszClassName = L"avbv";
+    windowclass.lpszClassName = L"bilibili-av-bv-converter";
     if (RegisterClassW(&windowclass) == 0) {
         return 0;
     }
@@ -34,30 +34,30 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     if (!AdjustWindowRect(&clientarea, WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, FALSE)) {
         return 0;
     }
-    window = CreateWindowExW(WS_EX_TOPMOST, L"avbv", L"Bilibili av-bv converter", WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT, clientarea.right - clientarea.left, clientarea.bottom - clientarea.top, NULL, NULL, hInstance, NULL);
+    window = CreateWindowExW(WS_EX_TOPMOST, L"bilibili-av-bv-converter", L"Bilibili av-bv converter", WS_OVERLAPPED | WS_CAPTION | WS_SYSMENU, CW_USEDEFAULT, CW_USEDEFAULT, clientarea.right - clientarea.left, clientarea.bottom - clientarea.top, NULL, NULL, hInstance, NULL);
     if (window == NULL) {
         return 0;
     }
     HFONT CourierNew = CreateFontW(16, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Courier New");
-    av = CreateWindowExW(0L, L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_TABSTOP, 5, 5, 290, 55, window, (HMENU)100, hInstance, NULL);
+    av = CreateWindowExW(0L, L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_BORDER, 5, 5, 290, 55, window, (HMENU)100, hInstance, NULL);
     if (av == NULL) {
         return 0;
     }
     SendMessageW(av, WM_SETFONT, (WPARAM)CourierNew, TRUE);
     SendMessageW(av, EM_LIMITTEXT, 12, 0);
-    bv = CreateWindowExW(0L, L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_TABSTOP, 5, 90, 290, 55, window, (HMENU)101, hInstance, NULL);
+    bv = CreateWindowExW(0L, L"EDIT", L"", WS_CHILD | WS_VISIBLE | WS_BORDER, 5, 90, 290, 55, window, (HMENU)101, hInstance, NULL);
     if (bv == NULL) {
         return 0;
     }
     SendMessageW(bv, WM_SETFONT, (WPARAM)CourierNew, TRUE);
     SendMessageW(bv, EM_LIMITTEXT, 12, 0);
     HFONT MSShellDlg = CreateFontW(16, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"MS Shell Dlg");
-    tobv = CreateWindowExW(0L, L"BUTTON", L"↓ AV→BV", WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_PUSHBUTTON, 175, 65, 100, 20, window, (HMENU)102, hInstance, NULL);
+    tobv = CreateWindowExW(0L, L"BUTTON", L"↓ AV→BV", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 175, 65, 100, 20, window, (HMENU)102, hInstance, NULL);
     if (tobv == NULL) {
         return 0;
     }
     SendMessageW(tobv, WM_SETFONT, (WPARAM)MSShellDlg, TRUE);
-    toav = CreateWindowExW(0L, L"BUTTON", L"↑ BV→AV", WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_PUSHBUTTON, 25, 65, 100, 20, window, (HMENU)103, hInstance, NULL);
+    toav = CreateWindowExW(0L, L"BUTTON", L"↑ BV→AV", WS_CHILD | WS_VISIBLE | BS_PUSHBUTTON, 25, 65, 100, 20, window, (HMENU)103, hInstance, NULL);
     if (toav == NULL) {
         return 0;
     }
