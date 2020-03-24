@@ -5,6 +5,8 @@ Bilibili av-bv converter
 
 A minimalist tool for conversion between Bilibili AV and BV identifiers. Works on Windows.
 
+Visit [Releases](https://github.com/Prcuvu/bilibili-av-bv-converter/releases) for binary downloads.
+
 Build from source
 ---
 
