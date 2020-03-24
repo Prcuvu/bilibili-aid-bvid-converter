@@ -23,8 +23,8 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     windowclass.cbWndExtra = 0;
     windowclass.hInstance = hInstance;
     windowclass.hIcon = NULL;
-    windowclass.hCursor = LoadCursorW(NULL, MAKEINTRESOURCEW(32512));
-    windowclass.hbrBackground = (HBRUSH)COLOR_WINDOW;
+    windowclass.hCursor = LoadCursorW(NULL, IDC_ARROW);
+    windowclass.hbrBackground = CreateSolidBrush(RGB(240, 240, 240));
     windowclass.lpszMenuName = NULL;
     windowclass.lpszClassName = L"bilibili-av-bv-converter";
     if (RegisterClassW(&windowclass) == 0) {
@@ -71,6 +71,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
     }
     DeleteObject(MSShellDlg);
     DeleteObject(CourierNew);
+    DeleteObject(windowclass.hbrBackground);
     return (int)message.wParam;
 }
 
