@@ -73,7 +73,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
         return 0;
     }
     (void)SendMessageW(aid_edit, WM_SETFONT, (WPARAM)CourierNew, TRUE);
-    (void)SendMessageW(aid_edit, EM_LIMITTEXT, 18, 0);
+    (void)SendMessageW(aid_edit, EM_LIMITTEXT, 16, 0);
     HFONT MSShellDlg = CreateFontW(16, 0, 0, 0, FW_DONTCARE, FALSE, FALSE, FALSE, ANSI_CHARSET, OUT_TT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"MS Shell Dlg");
     to_bvid_button = CreateWindowExW(0L, L"BUTTON", L"↓ aid→bvid", WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_PUSHBUTTON, 175, 65, 100, 20, window, (HMENU)102, hInstance, NULL);
     if (to_bvid_button == NULL) {
@@ -108,7 +108,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
 
 LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-    WCHAR buffer[19] = {18};
+    WCHAR buffer[17] = {16};
     WCHAR temp;
     unsigned long long aid = 0ULL;
 
@@ -123,12 +123,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
         case 102:
             (void)SendMessageW(aid_edit, EM_GETLINE, 0, (LPARAM)buffer);
 
-            if (buffer[0] != L'a' && buffer[0] != L'A' || buffer[1] != L'v' && buffer[1] != L'V') {
-                (void)MessageBoxW(hWnd, L"Invalid aid string", L"Error", MB_ICONHAND | MB_OK | MB_DEFBUTTON1 | MB_APPLMODAL);
-                goto abort_102;
-            }
-
-            for (size_t i = 2; buffer[i] != L'\0'; i += 1) {
+            for (size_t i = 0; buffer[i] != L'\0'; i += 1) {
                 if (buffer[i] < L'0' || buffer[i] > L'9') {
                     (void)MessageBoxW(hWnd, L"Invalid aid string", L"Error", MB_ICONHAND | MB_OK | MB_DEFBUTTON1 | MB_APPLMODAL);
                     goto abort_102;
@@ -214,13 +209,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
             aid = (aid & MASK_CODE) ^ XOR_CODE;
 
             {
-                size_t i = 17;
+                size_t i = 16;
                 while (aid != 0ULL) {
-                    buffer[i--] = aid % 10 + 0x30;
+                    buffer[--i] = aid % 10 + L'0';
                     aid /= 10;
                 }
-                buffer[i--] = L'v';
-                buffer[i] = L'a';
 
                 (void)SendMessageW(aid_edit, WM_SETTEXT, 0, (LPARAM)(buffer + i));
             }
