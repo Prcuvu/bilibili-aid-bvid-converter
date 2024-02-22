@@ -171,7 +171,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                     goto abort_103;
                 }
                 if (length > BV_LEN) {
-                    (void)MessageBoxW(hWnd, L"bvid string is to long", L"Error", MB_ICONHAND | MB_OK | MB_DEFBUTTON1 | MB_APPLMODAL);
+                    (void)MessageBoxW(hWnd, L"bvid string is too long", L"Error", MB_ICONHAND | MB_OK | MB_DEFBUTTON1 | MB_APPLMODAL);
                     goto abort_103;
                 }
             }
