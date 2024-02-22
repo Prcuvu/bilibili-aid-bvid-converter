@@ -85,7 +85,7 @@ int WINAPI wWinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPWSTR lpCmdLi
         return 0;
     }
     (void)SendMessageW(bvid_edit, WM_SETFONT, (WPARAM)CourierNew, TRUE);
-    (void)SendMessageW(bvid_edit, EM_LIMITTEXT, 12, 0);
+    (void)SendMessageW(bvid_edit, EM_LIMITTEXT, (WPARAM)BV_LEN, 0);
     to_aid_button = CreateWindowExW(0L, L"BUTTON", L"↑ bvid→aid", WS_CHILD | WS_VISIBLE | WS_TABSTOP | BS_PUSHBUTTON, 25, 65, 100, 20, window, (HMENU)103, hInstance, NULL);
     if (to_aid_button == NULL) {
         return 0;
@@ -168,10 +168,6 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
                 }
                 if (length < BV_LEN) {
                     (void)MessageBoxW(hWnd, L"bvid string is too short", L"Error", MB_ICONHAND | MB_OK | MB_DEFBUTTON1 | MB_APPLMODAL);
-                    goto abort_103;
-                }
-                if (length > BV_LEN) {
-                    (void)MessageBoxW(hWnd, L"bvid string is too long", L"Error", MB_ICONHAND | MB_OK | MB_DEFBUTTON1 | MB_APPLMODAL);
                     goto abort_103;
                 }
             }
