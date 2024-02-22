@@ -1,22 +1,23 @@
 <meta charset="UTF-8">
 
-Bilibili av-bv converter
+Bilibili aid-bvid converter
 ===
 
-A minimalist tool for conversion between Bilibili AV and BV identifiers. Works on Windows.
+A minimalist tool for conversion between Bilibili aid and bvid identifiers. Works on Windows.
 
-Visit [Releases](https://github.com/Prcuvu/bilibili-av-bv-converter/releases) for binary downloads.
+Visit [Releases](https://github.com/Prcuvu/bilibili-aid-bvid-converter/releases) for binary downloads.
 
 Build from source
 ---
 
 The source code can be compiled with both Microsoft Visual C++ (14.0 and above) and MinGW.
 
-For Microsoft Visual C++, pass `/source-charset:UTF-8` to compiler options and "Use Unicode Character Set" must be set.
+For Microsoft Visual C++, pass `/source-charset:UTF-8` to compiler options.
 
-For MinGW, pass `-DUNICODE -mwindows -municode` flags to `gcc`.
+For MinGW, pass `-mwindows -municode` flags to `gcc`.
 
 Reference
 ---
 
-* [Algorithm](https://www.zhihu.com/answer/1099438784) cracked by [mcfx](https://www.zhihu.com/people/-._.-)
+* Release 1: [Algorithm](https://www.zhihu.com/answer/1099438784) cracked by [mcfx](https://www.zhihu.com/people/-._.-)
+* Release 2: [Revised algorithm](https://github.com/Colerar/abv) from [Colerar](https://github.com/Colerar)
